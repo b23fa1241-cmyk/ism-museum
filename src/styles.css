@@ -1,0 +1,411 @@
+/* ISM Digital Museum */
+:root{--ink:#14122b;--muted:#5d5b78;--bg:#f4f5fa;--brand:#1a0bbf;--tint:#eceefa;--line:#d6d9ec;--card:#fff;--danger:#b00020}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif}
+h1,h2,h3{font-family:Georgia,"Times New Roman",serif;margin:0;line-height:1.2}
+button{background:var(--brand);color:#fff;border:1px solid var(--brand);border-radius:8px;padding:10px 16px;font:inherit;font-weight:600;cursor:pointer}
+button:hover:not(:disabled){filter:brightness(1.12)}button:disabled{opacity:.6;cursor:wait}
+button.ghost{background:transparent;color:var(--brand)}
+button.danger{color:var(--danger);border-color:var(--danger)}
+button.link{background:none;border:0;padding:0;color:var(--brand);text-decoration:underline;font-weight:600}
+:focus-visible{outline:3px solid #f2b134;outline-offset:2px}
+input,select,textarea{font:inherit;padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:#fff;color:var(--ink);width:100%}
+input:focus,select:focus,textarea:focus{border-color:var(--brand)}
+.err{color:var(--danger);margin:0}.hint{color:var(--muted);margin:6px 0 0;font-size:14px}.empty{padding:40px 0;color:var(--muted)}
+
+/* Нэвтрэх хуудас */
+.login{min-height:100vh;display:grid;grid-template-columns:1fr 1fr}
+.login-brand{background:var(--brand);color:#fff;padding:clamp(28px,6vw,80px);display:flex;flex-direction:column;justify-content:center;gap:18px}
+.login-brand h1{font-size:clamp(34px,5vw,58px)}
+.login-brand p{max-width:44ch;margin:0;color:#d8d4ff}
+.login-brand ul{list-style:none;margin:10px 0 0;padding:18px 0 0;border-top:1px solid rgba(255,255,255,.3);display:grid;gap:8px}
+.login-panel{display:grid;align-content:center;justify-items:center;gap:18px;padding:32px 20px}
+.login-panel .form,.guest{width:min(430px,100%)}
+.guest{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;color:var(--muted)}
+.switch{margin:0;color:var(--muted);text-align:center}
+@media(max-width:800px){.login{grid-template-columns:1fr}.login-brand{padding:32px 20px}}
+
+/* Үндсэн хэсэг */
+header{background:var(--brand);color:#fff;padding:20px max(16px,5vw) 0}
+header h1{font-size:clamp(24px,4vw,36px);padding-bottom:14px}
+nav{display:flex;gap:4px;overflow-x:auto}
+nav button{background:transparent;border:0;border-radius:8px 8px 0 0;color:#d8d4ff;white-space:nowrap}
+nav button.on{background:var(--bg);color:var(--brand)}
+nav button.ghost{margin-left:auto;border:1px solid #d8d4ff;border-radius:8px;margin-bottom:6px;color:#fff}
+main{max-width:1200px;margin:auto;padding:24px max(16px,5vw) 64px}
+.bar{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:22px}
+.bar input{flex:1;min-width:200px;width:auto}.bar select{width:auto}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:20px}
+article{background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+article img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block}
+.txt{padding:16px}.txt h3{font-size:20px}.txt small{color:var(--muted)}.txt p{margin:8px 0}
+.links a{color:var(--brand);font-weight:600;margin-right:14px}
+.row{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.timeline{border-left:3px solid var(--brand);padding-left:22px;display:grid;gap:18px}
+.timeline article{display:grid;grid-template-columns:minmax(0,200px) 1fr}
+.timeline small{font:700 24px Georgia,serif;color:var(--brand)}
+@media(max-width:560px){.timeline article{grid-template-columns:1fr}}
+
+/* Маягт */
+.form{display:grid;gap:16px;background:var(--card);padding:28px;border:1px solid var(--line);border-radius:14px}
+main .form{max-width:600px}
+.form h2{font-size:24px}.form h3{font-size:22px}
+.form label{display:grid;gap:6px;font-weight:600;font-size:14px}
+
+/* Багш нар */
+.portrait{grid-template-columns:repeat(auto-fill,minmax(240px,1fr))}
+.portrait article img{aspect-ratio:3/4;object-position:center top}
+.sub{display:block;margin-top:2px}
+.chips{list-style:none;margin:10px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:6px}
+.chips li{background:var(--tint);color:var(--brand);border-radius:999px;padding:3px 10px;font-size:13px;font-weight:600}
+.meta{margin:6px 0 0;font-size:14px;color:var(--muted)}.meta a{color:var(--brand)}
+
+/* Дэлгэрэнгүй цонх */
+.modal{position:fixed;inset:0;background:rgba(20,18,43,.55);display:grid;place-items:center;padding:16px;z-index:10;overflow:auto}
+.modal-box{background:var(--card);border-radius:14px;max-width:780px;width:100%;display:grid;grid-template-columns:minmax(0,270px) 1fr;overflow:hidden;position:relative}
+.modal-box img{width:100%;height:100%;min-height:320px;object-fit:cover;object-position:center top;display:block}
+.modal-box .txt{padding:26px}.modal-box .txt h3{font-size:26px}
+.modal-box .close{position:absolute;top:10px;right:10px;background:#fff}
+.info{margin:14px 0 0;display:grid;gap:12px}.info dt{font-size:13px;color:var(--muted)}.info dd{margin:2px 0 0;font-weight:500}
+.info a{color:var(--brand)}
+@media(max-width:640px){.modal-box{grid-template-columns:1fr}.modal-box img{height:320px;min-height:0}}
+
+/* Мэдээллийн мөр: "Нэр: утга" */
+.line{margin:8px 0;word-break:break-word}
+.line b{color:var(--muted);font-weight:600}
+.line a{color:var(--brand)}
+
+/* Багшийн карт: нэг мөр, зөөлөн өнгө */
+.portrait{grid-template-columns:repeat(auto-fill,minmax(290px,1fr))}
+.portrait .meta{margin:4px 0 0;font-size:14px;color:var(--muted)}
+.portrait .meta.mail{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.portrait .txt h3{margin-bottom:6px}
+.portrait .row{margin-top:14px}
+
+/* Дэлгэрэнгүй цонх: "Нэр | утга" мөрүүд */
+.kv-list{margin:14px 0 0;border-top:3px solid var(--brand)}
+.kv{display:grid;grid-template-columns:minmax(100px,150px) 1fr;gap:14px;padding:12px 0;border-bottom:1px solid var(--line);align-items:start}
+.kv dt{color:var(--muted);font-size:14px;padding-top:1px}
+.kv dd{margin:0;color:var(--ink);font-weight:600;min-width:0;word-break:break-word}
+.kv dd a{color:var(--brand)}
+.kv .chips{margin:0}
+.modal-box .txt h3{margin-bottom:2px}
+
+/* Багшийн карт: жижиг зураг, scroll-гүй багтана */
+.portrait{grid-template-columns:repeat(auto-fill,minmax(240px,280px));justify-content:start}
+.portrait article img{aspect-ratio:5/6}
+.portrait .txt{padding:14px 16px 16px}
+
+/* Дэлгэрэнгүй цонх: зураг тайрагдахгүй, багтаамжтай */
+.modal-box{max-width:860px;grid-template-columns:260px 1fr;align-items:start;max-height:92vh;overflow:auto}
+.modal-box>img{width:calc(100% - 40px);height:auto;min-height:0;margin:20px 0 20px 20px;aspect-ratio:3/4;border-radius:10px;object-fit:cover;object-position:center top}
+.modal-box.noimg{grid-template-columns:1fr}
+.kv{grid-template-columns:minmax(90px,120px) 1fr}
+.modal-box .chips li{font-size:12px;padding:2px 9px}
+@media(max-width:640px){.modal-box{grid-template-columns:1fr}.modal-box>img{width:200px;margin:20px auto 0}}
+
+/* Багш нар: нэг мөрөнд 4, өргөнийг дүүргэнэ */
+main{max-width:1400px}
+.portrait{grid-template-columns:repeat(4,minmax(0,1fr));justify-content:stretch;gap:20px}
+.portrait .meta{font-size:13.5px}
+@media(max-width:1280px){.portrait{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:900px){.portrait{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:520px){.portrait{grid-template-columns:minmax(0,1fr)}}
+
+/* Арга хэмжээний дэлгэрэнгүй цонх: дээр нь өргөн зураг */
+.modal-box.wide{grid-template-columns:1fr;max-width:760px}
+.modal-box.wide>img{width:100%;margin:0;border-radius:0;aspect-ratio:16/9;max-height:380px}
+.modal-box.wide .txt{padding:22px 26px 28px}
+.full{white-space:pre-line;line-height:1.7;margin:12px 0 0}
+
+/* Арга хэмжээний цонх: зураг тайрагдахгүй бүтнээрээ харагдана */
+.modal-box.wide>img{aspect-ratio:auto;height:auto;max-height:55vh;object-fit:contain;background:#0f0d24}
+article .row button{padding:8px 12px;font-size:14px}
+
+/* Арга хэмжээ: зураг зүүн талд, огноо ба товч агуулга баруун талд */
+.list{display:grid;gap:18px}
+.list article{display:grid;grid-template-columns:minmax(0,340px) 1fr}
+.list article img{height:auto;min-height:200px;max-height:340px;aspect-ratio:auto;object-fit:cover;object-position:center;background:none}
+.list .txt{padding:20px 24px;align-self:center}
+.list .txt h3{font-size:22px;color:var(--brand)}
+@media(max-width:640px){.list article{grid-template-columns:1fr}.list article img{height:auto;min-height:0;max-height:300px}}
+
+/* Он, огноог тэгшхэн (адил өндөртэй) тоогоор харуулах */
+.list .txt h3,
+.timeline small{
+  font-family:system-ui,-apple-system,"Segoe UI",sans-serif;
+  font-variant-numeric:lining-nums tabular-nums;
+}
+.list .txt h3{font-weight:700}
+.timeline small{font-weight:700;font-size:26px}
+
+/* Үзмэрийн дэлгэрэнгүй цонх */
+.kv dd.full{margin:0;font-weight:500}
+.kv .links a{margin-right:14px}
+
+/* Дэлгэрэнгүй цонх: Х хаах товч */
+.modal-box .close{z-index:2;width:40px;height:40px;padding:0;display:grid;place-items:center;border:0;border-radius:50%;background:transparent;color:var(--ink)}
+.modal-box .close:hover:not(:disabled){background:var(--tint);filter:none}
+.modal-box .txt h3{padding-right:36px}
+.modal-sub{margin:6px 0 0;color:var(--brand);font-weight:700;font-size:18px}
+
+/* Үзмэр, арга хэмжээ: зүүн талд зургийн цомог, баруун талд мэдээлэл */
+.modal-box.gallery{max-width:980px;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr)}
+.modal-box.gallery.noimg{grid-template-columns:1fr}
+.gal{padding:20px;display:grid;gap:12px}
+.gal-main{position:relative;background:#f4f5fa;border-radius:10px;display:grid;place-items:center;min-height:240px}
+.modal-box .gal-main img{width:100%;height:auto;min-height:0;max-height:62vh;object-fit:contain;border-radius:10px;display:block}
+.gal-main button.nav{position:absolute;top:50%;transform:translateY(-50%);width:38px;height:38px;padding:0;border-radius:50%;background:rgba(255,255,255,.92);color:var(--ink);border:1px solid var(--line);font-size:24px;line-height:1}
+.gal-main .prev{left:8px}.gal-main .next{right:8px}
+.gal-thumbs{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+.gal-thumbs button.th{padding:0;border:2px solid transparent;background:#f4f5fa;border-radius:8px;overflow:hidden;aspect-ratio:1}
+.gal-thumbs button.th.on{border-color:var(--brand)}
+.modal-box .gal-thumbs img{width:100%;height:100%;min-height:0;object-fit:cover;display:block}
+@media(max-width:640px){.modal-box.gallery{grid-template-columns:1fr}}
+
+/* Маягт: олон зураг оруулах */
+.imgfield{display:grid;gap:8px;font-weight:600;font-size:14px}
+.imgfield small{color:var(--muted);font-weight:400}
+.thumbs{display:flex;flex-wrap:wrap;gap:10px}
+.thumb{position:relative;width:84px;height:84px}
+.thumb img{width:100%;height:100%;object-fit:cover;border-radius:8px;border:1px solid var(--line)}
+.thumb button.x{position:absolute;top:-7px;right:-7px;width:22px;height:22px;padding:0;border-radius:50%;background:var(--danger);border-color:var(--danger);font-size:14px;line-height:1}
+
+/* Арга хэмжээний огноо: энгийн фонт */
+.modal-box .txt h3.plain{font-family:system-ui,-apple-system,"Segoe UI",sans-serif;font-variant-numeric:lining-nums tabular-nums;font-weight:700;font-size:24px;color:var(--brand)}
+
+/* Урт тексттэй дэлгэрэнгүй цонх: зураг байрандаа, гарчиг дээрээ тогтож, зөвхөн текст гүйлгэгдэнэ */
+.modal-box.gallery{max-height:min(88vh,780px);overflow:hidden;grid-template-rows:minmax(0,1fr);align-items:stretch}
+.modal-box.gallery .gal{align-self:start;max-height:100%;overflow-y:auto}
+.modal-box.gallery .txt{display:flex;flex-direction:column;min-height:0;padding:0;overflow:hidden}
+.modal-box.gallery .txt-head{padding:26px 64px 14px 8px;border-bottom:1px solid var(--line)}
+.modal-box.gallery.noimg .txt-head{padding-left:28px}
+.modal-box.gallery .txt-head h3{padding-right:0;margin:0}
+.modal-box.gallery .txt-body{padding:16px 28px 28px 8px;overflow-y:auto;min-height:0;font-size:15.5px;line-height:1.75;scrollbar-width:thin}
+.modal-box.gallery.noimg .txt-body{padding-left:28px}
+.modal-box.gallery .txt-body .full{margin:0}
+.modal-box.gallery .kv-list{margin-top:0}
+@media(max-width:640px){
+  .modal-box.gallery{overflow:auto;max-height:92vh;grid-template-rows:none}
+  .modal-box.gallery .txt,.modal-box.gallery .txt-body{overflow:visible}
+  .modal-box.gallery .txt-head,.modal-box.gallery .txt-body{padding-left:20px;padding-right:20px}
+}
+
+/* Бүтээгч оюутны танилцуулга */
+.sec{margin:24px 0 10px;font:700 13px/1.2 system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--muted);letter-spacing:.04em;text-transform:uppercase}
+.creator{display:flex;gap:16px;align-items:center;background:var(--tint);border-radius:12px;padding:14px 16px}
+.modal-box .creator img{width:76px;height:76px;min-height:0;border-radius:50%;object-fit:cover;object-position:center top;flex:none}
+.creator .avatar{width:76px;height:76px;border-radius:50%;flex:none;display:grid;place-items:center;background:var(--brand);color:#fff;font:700 30px Georgia,serif}
+.creator strong{display:block;font-size:17px;line-height:1.3}
+.creator span:not(.avatar){display:block;color:var(--muted);font-size:14px;margin-top:2px}
+
+/* ===== Дэлгэрэнгүй цонх: шинэ загвар ===== */
+.modal-box{border-radius:18px;box-shadow:0 24px 60px rgba(20,18,43,.35)}
+.modal-box.gallery{max-width:1040px;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr)}
+.modal-box.gallery.noimg{grid-template-columns:1fr}
+.side{align-self:start;max-height:100%;overflow-y:auto;scrollbar-width:thin}
+.modal-box.gallery .gal{max-height:none;overflow:visible;align-self:auto}
+.modal-box.gallery .txt{border-left:1px solid var(--line)}
+.modal-box.gallery.noimg .txt{border-left:0}
+.modal-box.gallery .txt-head{padding:28px 64px 16px 28px;border-bottom:0}
+.modal-box.gallery .txt-body{padding:4px 28px 28px}
+.kicker{display:block;margin-bottom:8px;font:700 12px/1 system-ui,-apple-system,"Segoe UI",sans-serif;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.modal-box.gallery .txt-head h3{font-size:28px;line-height:1.2}
+.modal-box.gallery .txt-head h3.plain{font-size:30px}
+.chips-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.chips-row span{background:var(--tint);color:var(--brand);border-radius:999px;padding:4px 12px;font-size:13px;font-weight:700}
+.chips-row .ghostchip{background:transparent;border:1px solid var(--line);color:var(--muted);font-weight:600}
+.sect{padding:16px 0;border-top:1px solid var(--line)}
+.sect:first-child{border-top:0;padding-top:4px}
+.sect h4{margin:0 0 8px;font:700 12px/1 system-ui,-apple-system,"Segoe UI",sans-serif;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.sect .full{margin:0;font-size:15.5px;line-height:1.75}
+.sect .chips{margin:0}
+.sect .chips li{font-size:13px;padding:4px 12px}
+.linkbtns{display:flex;gap:10px;flex-wrap:wrap}
+.linkbtn{display:inline-flex;align-items:center;gap:6px;padding:9px 16px;border:1.5px solid var(--brand);border-radius:10px;color:var(--brand);font-weight:700;text-decoration:none}
+.linkbtn:hover{background:var(--brand);color:#fff}
+.gal-main{cursor:zoom-in}
+.gal-main .count{position:absolute;right:10px;bottom:10px;background:rgba(20,18,43,.72);color:#fff;border-radius:999px;padding:3px 10px;font-size:12px;font-weight:600}
+.lightbox{position:fixed;inset:0;z-index:30;background:rgba(10,8,30,.92);display:grid;place-items:center;padding:20px;cursor:zoom-out}
+.modal-box .lightbox img{width:auto;height:auto;min-height:0;max-width:94vw;max-height:92vh;object-fit:contain;border-radius:6px}
+.side .creator{margin:20px 20px 0}
+.creator small{display:block;margin-bottom:2px;color:var(--muted);font-size:12px;letter-spacing:.04em;text-transform:uppercase}
+@media(max-width:640px){.modal-box.gallery .txt{border-left:0}.side{overflow:visible}}
+
+/* Зүүн тал: гүйлгэхгүй, бүтнээрээ харагдана (зургийн өндөр цонхны өндөрт тохирно) */
+.side{overflow:visible;max-height:none}
+.gal-main{min-height:160px}
+.modal-box .gal-main img{max-height:calc(min(88vh,780px) - 330px)}
+@media(max-width:640px){.modal-box .gal-main img{max-height:62vh}}
+
+/* ===== ISM Time Machine ===== */
+.tm-hero{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap;margin-bottom:22px}
+.tm-hero h2{font-size:clamp(28px,4vw,40px);color:var(--brand)}
+.tm-hero p{margin:6px 0 0;color:var(--muted);max-width:62ch}
+.tm-axis-wrap{display:flex;align-items:center;gap:8px;margin-bottom:22px}
+button.round{width:40px;height:40px;padding:0;border-radius:50%;font-size:22px;line-height:1;flex:none}
+.tm-axis{display:flex;gap:4px;overflow-x:auto;padding:6px 4px 10px;flex:1;scrollbar-width:thin}
+.tm-axis button.tm-year{position:relative;flex:none;min-width:92px;padding:26px 8px 8px;background:transparent;color:var(--ink);border:0;border-radius:10px;display:grid;justify-items:center;gap:2px;font-weight:600}
+.tm-year::before{content:"";position:absolute;top:13px;left:0;right:0;height:3px;background:var(--brand)}
+.tm-year.future::before{background:repeating-linear-gradient(90deg,var(--brand) 0 8px,transparent 8px 14px);opacity:.55}
+.tm-year .dot{position:absolute;top:5px;left:50%;transform:translateX(-50%);width:19px;height:19px;border-radius:50%;background:#fff;border:3px solid var(--brand);z-index:1}
+.tm-year.future .dot{border-style:dashed}
+.tm-year.on .dot{background:var(--brand);box-shadow:0 0 0 5px rgba(26,11,191,.18)}
+.tm-year b{font:700 18px system-ui,-apple-system,"Segoe UI",sans-serif;font-variant-numeric:lining-nums tabular-nums}
+.tm-year.on b{color:var(--brand)}
+.tm-year small{font-size:12px;color:var(--muted);font-weight:500}
+.tm-year.now small{color:var(--brand);font-weight:700}
+.tm-panel{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px}
+.tm-head{display:flex;align-items:baseline;gap:14px}
+.tm-head h2{font:700 44px/1 system-ui,-apple-system,"Segoe UI",sans-serif;font-variant-numeric:lining-nums;color:var(--brand)}
+.tm-head span{color:var(--muted);font-weight:600}
+.tm-empty{color:var(--muted);padding:18px 0 4px}
+.tm-group{margin-top:24px}
+.tm-group h4{margin:0 0 10px;font:700 12px/1 system-ui,-apple-system,"Segoe UI",sans-serif;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.tm-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px}
+.tm-cards.caps{grid-template-columns:repeat(auto-fill,minmax(320px,1fr))}
+.tm-card{display:grid;grid-template-columns:96px 1fr;gap:14px;align-items:start;border:1px solid var(--line);border-radius:12px;padding:12px;background:#fff}
+.tm-card.noimg{grid-template-columns:1fr}
+.tm-card img{width:96px;height:96px;object-fit:cover;border-radius:8px;display:block}
+.tm-card small{color:var(--muted);font-size:12px}
+.tm-card h3{font-size:17px;margin:2px 0 4px}
+.tm-card p{margin:0;font-size:14px;color:var(--muted);display:-webkit-box;-webkit-line-clamp:3;line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.capsule{display:grid;gap:10px;align-content:start;border:1.5px dashed var(--brand);border-radius:14px;padding:16px;background:var(--tint)}
+.capsule.open{background:#fff;border-style:solid}
+.cap-top{display:flex;gap:12px;align-items:center}
+.cap-top small{display:block;color:var(--muted);font-size:12px}
+.cap-top h3{font-size:19px}
+.capsule .lock{width:44px;height:44px;border-radius:50%;background:var(--brand);color:#fff;display:grid;place-items:center;flex:none}
+.capsule .msg{margin:0;white-space:pre-line;line-height:1.7}
+.capsule img{width:100%;max-height:260px;object-fit:cover;border-radius:10px;display:block}
+.capsule .count{margin:0;color:var(--brand);font-weight:700}
+.capsule .by{margin:0;color:var(--muted);font-size:14px}
+.capsule .row{margin-top:2px}
+
+/* Цаг хугацааны машин: жил бүр өргөнийг жигд дүүргэнэ */
+.tm-axis button.tm-year{flex:1 0 92px}
+.tm-hero p{margin:0}
+.tm-card h3.plain{font-family:system-ui,-apple-system,"Segoe UI",sans-serif;font-variant-numeric:lining-nums tabular-nums;font-weight:700;color:var(--brand)}
+
+/* Цаг хугацааны машин: зураг бүтнээрээ, карт дарж дэлгэрэнгүй үзнэ */
+.tm-cards{align-items:start;grid-template-columns:repeat(auto-fill,minmax(300px,1fr))}
+.tm-card{grid-template-columns:1fr;gap:12px;cursor:pointer;transition:border-color .15s,box-shadow .15s}
+.tm-card:hover,.tm-card:focus-visible{border-color:var(--brand);box-shadow:0 6px 18px rgba(26,11,191,.12)}
+.tm-card img{width:100%;height:auto;max-height:420px;object-fit:contain;background:var(--bg);border-radius:8px}
+.tm-card .more{display:inline-block;margin-top:8px;color:var(--brand);font-size:14px;font-weight:700}
+
+/* ===== Гар утсанд тохируулсан загвар ===== */
+html{-webkit-text-size-adjust:100%}
+article,.tm-card,.capsule,.txt-body,.kv dd{overflow-wrap:anywhere}
+/* Багана нь дэлгэцээс өргөн болж хажуу тийш гүйлгэгдэхээс сэргийлнэ */
+.grid{grid-template-columns:repeat(auto-fill,minmax(min(260px,100%),1fr))}
+.tm-cards{grid-template-columns:repeat(auto-fill,minmax(min(300px,100%),1fr))}
+.tm-cards.caps{grid-template-columns:repeat(auto-fill,minmax(min(320px,100%),1fr))}
+
+@media(max-width:640px){
+  button{min-height:44px}
+  header{padding:14px 16px 0}
+  header h1{font-size:24px;padding-bottom:10px}
+  nav{gap:2px;scrollbar-width:none;scroll-snap-type:x proximity}
+  nav::-webkit-scrollbar{display:none}
+  nav button{padding:10px 12px;font-size:15px;scroll-snap-align:start}
+  nav button.ghost{margin-left:8px;min-height:0;padding:8px 12px}
+  main{padding:16px 16px 48px}
+  .bar{gap:8px;margin-bottom:16px}
+  .bar input{flex:1 1 100%;min-width:0}
+  .bar select{flex:1 1 0;min-width:0}
+  .bar button{flex:none}
+  .form{padding:18px}
+  .login-panel{padding:24px 16px}
+  .list .txt{padding:16px}
+  .list .txt h3{font-size:20px}
+  .timeline{padding-left:14px}
+  /* Цаг хугацааны машин */
+  .tm-hero{margin-bottom:16px}
+  .tm-hero button{width:100%}
+  .tm-panel{padding:16px}
+  .tm-head h2{font-size:36px}
+  .tm-axis button.tm-year{min-width:78px;min-height:0}
+  .tm-axis button.tm-year b{font-size:16px}
+  /* Дэлгэрэнгүй цонх */
+  .modal{padding:10px}
+  .modal-box .close{top:8px;right:8px;background:rgba(255,255,255,.95);box-shadow:0 1px 6px rgba(0,0,0,.25)}
+  .side .creator{margin:56px 16px 0}
+  .gal{padding:16px}
+  .modal-box.gallery .txt-head{padding-top:20px}
+  .gal-main button.nav{min-height:0}
+  .gal-thumbs button.th{min-height:0}
+}
+
+/* Хуудас дэлгэцээс өргөн болж баруун тийш шахагдахаас сэргийлнэ */
+html,body{width:100%;max-width:100%}
+body{display:block;min-width:0}
+#root{display:block;width:100%;max-width:none;margin:0;padding:0;text-align:left}
+main{min-width:0}
+nav,.tm-axis{contain:inline-size}
+.tm-axis{position:relative}
+
+/* ===== Цаг хугацааны машин: вэб системийн загвар ===== */
+.badge{display:inline-block;border-radius:999px;padding:3px 12px;font-size:13px;font-weight:700;line-height:1.5}
+.badge.past{background:var(--tint);color:var(--muted)}
+.badge.now{background:var(--brand);color:#fff}
+.badge.future{background:transparent;border:1px dashed var(--brand);color:var(--brand)}
+.badge.locked{background:#fdf0d5;color:#9a6200}
+.badge.open{background:#dff3e6;color:#1a8a4a}
+
+.tm-hero{align-items:center;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 20px;margin-bottom:16px}
+.tm-hero p{max-width:70ch}
+.tm-axis-wrap{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:10px 14px;margin-bottom:16px}
+.tm-panel{box-shadow:0 1px 2px rgba(20,18,43,.05)}
+.tm-head{display:flex;align-items:center;flex-wrap:wrap;gap:12px;padding-bottom:16px;border-bottom:1px solid var(--line)}
+.tm-sum{margin-left:auto;display:flex;flex-wrap:wrap;gap:8px}
+.tm-head .tm-sum span{background:var(--tint);color:var(--brand);border-radius:8px;padding:4px 10px;font-size:13px;font-weight:600}
+.tm-group{margin-top:22px}
+.tm-group h4{display:flex;align-items:center;gap:8px;margin:0 0 14px;padding-bottom:10px;border-bottom:1px solid var(--line)}
+.tm-group h4 b{background:var(--tint);color:var(--brand);border-radius:999px;padding:2px 9px;font-size:12px;letter-spacing:0}
+
+/* Капсул: жагсаалтын мөр */
+.tm-cards.caps{grid-template-columns:1fr;gap:10px}
+.capsule{grid-template-columns:auto 1fr auto;align-items:center;gap:6px 14px;border:1px solid var(--line);background:var(--card);border-radius:12px;padding:14px 16px}
+.capsule.open{border-left:4px solid #1a8a4a}
+.capsule:not(.open){border-left:4px solid #c27a00}
+.cap-main h3{font-size:18px;margin:0}
+.cap-meta{margin:2px 0 0;color:var(--muted);font-size:14px}
+.cap-side{display:flex;align-items:center;justify-content:flex-end;flex-wrap:wrap;gap:12px}
+.capsule .cap-side .count{margin:0;font-size:14px;color:var(--brand);font-weight:700}
+.cap-body{grid-column:1/-1;display:grid;gap:10px;margin-top:6px;padding-top:12px;border-top:1px solid var(--line)}
+.cap-actions{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}
+@media(max-width:640px){
+  .capsule{grid-template-columns:auto 1fr}
+  .cap-side{grid-column:1/-1;justify-content:flex-start}
+  .tm-sum{margin-left:0;width:100%}
+}
+
+/* ===== Цаг хугацааны машин: оны босоо жагсаалт (sidebar) ===== */
+.tm-layout{display:grid;grid-template-columns:240px minmax(0,1fr);gap:20px;align-items:start}
+.tm-side{position:sticky;top:16px;max-height:calc(100vh - 32px);overflow-y:auto;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 12px;scrollbar-width:thin}
+.tm-side h4{margin:0 8px 8px;font:700 12px/1 system-ui,-apple-system,"Segoe UI",sans-serif;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.tm-side button.tm-yr{position:relative;width:100%;min-height:0;display:flex;align-items:center;gap:8px;background:transparent;color:var(--ink);border:0;border-radius:8px;padding:7px 10px;text-align:left;font-weight:600}
+.tm-side button.tm-yr:hover{background:var(--tint);filter:none}
+.tm-yr b{font:700 16px system-ui,-apple-system,"Segoe UI",sans-serif;font-variant-numeric:lining-nums tabular-nums}
+.tm-side button.tm-yr.on{background:var(--tint);color:var(--brand)}
+.tm-yr small{margin-left:auto;background:var(--brand);color:#fff;border-radius:999px;padding:1px 8px;font-size:11px;font-weight:700}
+.tm-select{display:none;width:100%;margin-bottom:14px;font-weight:600}
+@media(max-width:900px){
+  .tm-layout{grid-template-columns:1fr}
+  .tm-side{display:none}
+  .tm-select{display:block}
+}
+
+.tm-list{display:grid;gap:2px}
+.tm-yr small.fut{background:transparent;color:var(--brand);border:1px dashed var(--brand)}
+
+/* Карт дээр дарж дэлгэрэнгүй үзнэ */
+article.clickable{cursor:pointer;transition:border-color .15s,box-shadow .15s}
+article.clickable:hover,article.clickable:focus-visible{border-color:var(--brand);box-shadow:0 6px 18px rgba(26,11,191,.12)}
+
+/* Цаг хугацааны машин: зөвхөн дарж болох карт л заагчтай; түүхийн тайлбар бүтнээрээ */
+.tm-card{cursor:default}
+.tm-card.clickable{cursor:pointer}
+.tm-card:hover:not(.clickable){border-color:var(--line);box-shadow:none}
+.tm-card p.full-text{display:block;overflow:visible;-webkit-line-clamp:unset;line-clamp:unset}
