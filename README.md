@@ -2,8 +2,8 @@
 
 Мэдээллийн системийн менежментийн тэнхимийн түүх, багш нар, арга хэмжээ болон оюутнуудын бүтээлийг нэг дор хадгалж, олон нийтэд хүргэх дижитал музей.
 
-- "Ажиллаж буй хувилбар:" `<DEPLOY URL>`
-- "GitHub repository:" `<REPOSITORY URL>`
+- "Ажиллаж буй хувилбар:" https://ism-museum-nine.vercel.app/
+- "GitHub repository:" https://github.com/b23fa1241-cmyk/ism-museum
 
 ## 1. Төслийн зорилго
 
@@ -20,7 +20,7 @@
 "Алхам 1. Repository-г татах"
 
 ```bash
-git clone <REPOSITORY_URL>
+git clone https://github.com/b23fa1241-cmyk/ism-museum
 cd ism-museum
 npm install
 ```
@@ -31,8 +31,7 @@ npm install
 
 "Алхам 3. Өгөгдлийн сан тохируулах"
 
-Supabase-ийн SQL Editor хэсэгт `database/` хавтас дахь SQL файлуудыг дарааллаар нь ажиллуулна.
-
+Supabase-ийн SQL Editor хэсэгт төслийн `supabase/schema.sql` файлын агуулгыг хуулж ажиллуулна.
 "Алхам 4. Storage тохируулах"
 
 Supabase-ийн Storage хэсэгт `images` нэртэй Public bucket үүсгэнэ.
@@ -42,8 +41,8 @@ Supabase-ийн Storage хэсэгт `images` нэртэй Public bucket үүс�
 Төслийн үндсэн хавтаст `.env` файл үүсгэж, Supabase-ийн URL болон API түлхүүрийг оруулна.
 
 ```env
-VITE_SUPABASE_URL=https://xxxx.supabase.co
-VITE_SUPABASE_ANON_KEY=xxxx
+VITE_SUPABASE_URL=https://your-project-id.supabase.co
+VITE_SUPABASE_ANON_KEY=your-supabase-publishable-key
 ```
 
 "Алхам 6. Төслийг ажиллуулах"
